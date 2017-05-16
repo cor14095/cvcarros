@@ -7,12 +7,95 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>post-vehicle</ion-title>
+    <ion-title>Publicar carro</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Marca</ion-label>
+      <ion-input type="text" [(ngModel)] = "brandField" placeholder="Toyota"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Linea</ion-label>
+      <ion-input type="text" [(ngModel)] = "modelField" placeholder="RAV"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Año</ion-label>
+      <ion-input type="year" [(ngModel)] = "yearField" placeholder="2015"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Kilometraje</ion-label>
+      <ion-input type="number" [(ngModel)] = "odomField" placeholder="15000"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de chasis</ion-label>
+      <ion-select [(ngModel)]="typeField">
+        <ion-option value="pickup">Pick up</ion-option>
+        <ion-option value="minivan">Minivan</ion-option>
+        <ion-option value="camioneta">Camioneta</ion-option>
+        <ion-option value="4dsed">4p Sedan</ion-option>
+        <ion-option value="2dsed">2p Sedan</ion-option>
+        <ion-option value="coupe">Coupe</ion-option>
+        <ion-option value="3d Coupe">3p Coupe</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Color exterior</ion-label>
+      <ion-input type="text" [(ngModel)] = "extColorField" placeholder="Gris"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Color interior</ion-label>
+      <ion-input type="text" [(ngModel)] = "intColorField" placeholder="beige"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de interior</ion-label>
+      <ion-select [(ngModel)]="intTypeField">
+        <ion-option value="Cuero">Cuero</ion-option>
+        <ion-option value="Tela">Tela</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Origen del vehiculo</ion-label>
+      <ion-select [(ngModel)]="originField">
+        <ion-option value="Agencia u/d">Agencia unico dueño</ion-option>
+        <ion-option value="Agencia m/d">Agencia otro dueño</ion-option>
+        <ion-option value="Rodado">Rodado</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Precio Q</ion-label>
+      <ion-input type="number" [(ngModel)] = "priceField" placeholder="55000"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)] = "descField" placeholder="Ful equipo, negociable, recibo vehículo..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Contacto</ion-label>
+      <ion-input type="phone" [(ngModel)] = "phoneField" placeholder="12345678"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div class = "buttonHolder">
+    <button button ion-button block (click)="publish()">
+      Publicar carro
+    </button>
+  </div>
 
 </ion-content>

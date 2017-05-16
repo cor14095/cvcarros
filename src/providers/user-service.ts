@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { AlertController } from 'ionic-angular';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 import * as firebase from 'firebase';
 
 /*
@@ -24,8 +26,10 @@ export class UserService {
 
   public fireAuth: any;
   public userProfile: any;
+  public postsNumber: any;
+  public carPost: any;
 
-  constructor() {
+  constructor(public alertCtrl: AlertController) {
     // Initialize Firebase
     try {
       firebase.initializeApp(config);
@@ -37,6 +41,23 @@ export class UserService {
     // Make authentication and get user profiles.
     this.fireAuth = firebase.auth();
     this.userProfile = firebase.database().ref('user-data');
+    this.carPost = firebase.database().ref('car-posts');
+    this.postsNumber = firebase.database().ref('posts');
+  }
+
+  // This is a helper function to display messages.
+  showAlert(tittle: string, message:string) {
+    let alert = this.alertCtrl.create({
+      title: tittle,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  getDisplayName(): any {
+    var user = this.fireAuth.currentUser;
+    return user.displayName;
   }
 
   singIn(email: string, password: string): any {
@@ -46,6 +67,7 @@ export class UserService {
       var errorMessage = error.message;
       // ...
       console.log(errorMessage);
+      console.log(errorCode);
     });
   }
 
@@ -67,6 +89,9 @@ export class UserService {
                 zone: zone,
                 type: type
               });
+              authenticatedUser.updateProfile({
+                displayName: name + " " + lastName
+              });
             })
         });
   }
@@ -83,10 +108,61 @@ export class UserService {
     var userId = this.fireAuth.currentUser.uid;
     var result = firebase.database().ref('user-data').child(userId).once('value').then(
       function(snapshot) {
-        //console.log(snapshot.val());
+        console.log(snapshot.val());
         return snapshot.val();
       });
     return result;
+  }
+
+  postVehicle(brand, model, year, odom, type, extColor, intColor, intType,
+    origin, price, desc, phone, image): any {
+      var user = this.fireAuth.currentUser;
+      console.log(user);
+      if (user.emailVerified) {
+        // A post entry.
+        var postData = {
+          brand: brand,
+          model: model,
+          year: year,
+          odom: odom,
+          type: type,
+          extColor: extColor,
+          intColor: intColor,
+          intType: intType,
+          origin: origin,
+          price: price,
+          desc: desc,
+          phone: phone,
+          image: "img/" + image,
+          user: user.email
+        };
+
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref().child('posts').push().key;
+
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        var updates = {};
+        updates['/posts/' + newPostKey] = postData;
+        updates['/car-posts/' + user.uid + '/' + newPostKey] = postData;
+
+        return firebase.database().ref().update(updates);
+
+      } else {
+        this.showAlert("Error", "Usted no ha verificado su correo, verifiquelo antes de poder publicar un vehiculo.");
+        user.sendEmailVerification();
+
+        return Promise.resolve(undefined);
+      }
+  }
+
+  getCars() {
+    // If there's no data in cars, then we must check it.
+    return new Promise((resolve) => {
+      firebase.database().ref('posts').once('value').then(function(snapshot) {
+        //console.log(snapshot.val());
+        resolve(snapshot.val());
+      });
+    });
   }
 
 }
