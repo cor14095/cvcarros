@@ -32,18 +32,17 @@ export class Profile {
 
 // TODO: Fix this function to return correct values.
   getValues() {
-    var values = this.userService.getProfile();
-    console.log(values); // <-- This returns something.
-    /*
-    this.nameField = values["name"];
-    this.lastNameField = values["lastName"];
-    this.ageField = values["age"];
-    this.emailField = values["email"];
-    this.phoneField = values["phone"];
-    this.cityField = values["city"];
-    this.zoneField = values["zone"];
-    this.typeField = values["type"];
-    */
-  }
+    var test = this;
+    this.userService.getProfile().then(function(object){
+      test.nameField = object.name;
+      test.lastNameField = object.lastName;
+      test.ageField = object.age;
+      test.emailField = object.email;
+      test.phoneField = object.phone;
+      test.cityField = object.city;
+      test.zoneField = object.zone;
+      test.typeField = object.type;
+    });
 
+  }
 }
