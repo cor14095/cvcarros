@@ -30,17 +30,17 @@
  -->
   <ion-list>
     <ion-card *ngFor="let car of cars">
-      <img src={{car.img}}/>
+      <img src="{{car.image}}"/>
       <ion-card-content>
         <ion-card-title>
-          {{car.make}} {{car.brand}} - {{car.year}}
+          {{car.make}} {{car.model}} - {{car.year}}
           </ion-card-title>
         <p>
-          {{car.desc}}.
-          Kilometraje: {{car.odom}}       Color: {{car.color}}
-          Tipo: {{car.type}}       Color Interior: {{car.intColor}}
-          Tipo interior: {{car.intType}}       Origen: {{car.origin}}
-          Precio: {{car.price}}       Contacto: {{car.phone}}
+          {{car.desc}}.<br>
+          Kilometraje: {{car.odom}}<br>
+          Interior:{{car.intType}} - {{car.intColor}}<br>
+          Origen: {{car.origin}}<br>
+          Precio: {{car.price}}
         </p>
       </ion-card-content>
     </ion-card>
