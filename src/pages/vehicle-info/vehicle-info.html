@@ -23,16 +23,18 @@
 
         <p>
           Tipo de vehiculo: {{car.type}}<br>
-          Kilometraje: {{car.odom}}<br>
+          Odometro en: {{car.odomT}} <br>
+          Kilometraje: {{car.odom}} Km<br>
           Interior:{{car.intType}} - {{car.intColor}}<br>
           Origen: {{car.origin}}<br>
-          Precio: Q{{car.price}}<br>
+          Precio: Q {{car.price}}<br>
           Color externo: {{car.extColor}}<br>
-
+          <br>
+          El precio es Q{{avg}} más {{verb}} que otros similares.
         </p>
         <p>{{car.desc}}</p>
       </div>
-      <button button ion-button block>Solicitar reunion </button>
+      <button button ion-button block> Solicitar reunion </button>
 
 
 </ion-content>

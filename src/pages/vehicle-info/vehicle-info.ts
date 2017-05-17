@@ -17,12 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class VehicleInfoPage {
 
   public car: any;
+  public verb: any;
+  public avg: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public userService: UserService) {
       this.car = this.navParams.get('car');
+  }
 
-      console.log(this.car);
+  ionViewDidEnter() {
+    this.avg = Math.abs(Math.round((this.car.price - this.car.avg) * 100) / 100).toFixed(2);
+
+    if (this.avg < 0) {
+      this.verb = "barato";
+    } else {
+      this.verb = "caro";
+    }
   }
 
 }

@@ -36,7 +36,7 @@
 
     <ion-item>
       <ion-label>Edad</ion-label>
-      <ion-input type="number" [(ngModel)] = "ageField" placeholder="18"></ion-input>
+      <ion-input type="number" [(ngModel)] = "ageField" placeholder="en años"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -46,7 +46,7 @@
 
     <ion-item>
       <ion-label>Número de telefono</ion-label>
-      <ion-input type="phone" [(ngModel)] = "phoneField" placeholder="1234 5678"></ion-input>
+      <ion-input type="number" [(ngModel)] = "phoneField" placeholder="1234 5678"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -62,8 +62,8 @@
     <ion-item>
       <ion-label>Tipo de cuenta</ion-label>
       <ion-select [(ngModel)]="typeField">
-        <ion-option value="single">Individual</ion-option>
-        <ion-option value="business">Concesionaria</ion-option>
+        <ion-option value="Individual">Individual</ion-option>
+        <ion-option value="Concesionaria Normal">Concesionaria</ion-option>
       </ion-select>
     </ion-item>
 
@@ -80,12 +80,10 @@
 
   <div class = "buttonHolder">
     <button button ion-button block (click)="register()">
-      <ion-icon name="person-add"></ion-icon>
       Crear cuenta.
     </button>
 
     <button button ion-button block (click)="closeRegister()">
-      <ion-icon name="person-add"></ion-icon>
       Cancelar.
     </button>
   </div>

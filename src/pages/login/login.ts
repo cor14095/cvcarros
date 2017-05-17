@@ -28,10 +28,6 @@ export class Login {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
-  }
-
   logIn() {
     console.log('User ' + this.emailField + ' try to log in with password ' + this.passwordField);
     this.userService.singIn(this.emailField, this.passwordField).then(authData => {

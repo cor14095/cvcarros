@@ -22,11 +22,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="search($event)"
-    (ionCancel)="onCancel()">
+  <ion-searchbar (ionInput)="search($event)">
   </ion-searchbar>
 
   <ion-list>
@@ -37,11 +33,10 @@
           {{car.brand}} {{car.model}} - {{car.year}}
         </ion-card-title>
         <p>
-          {{car.desc}}.<br>
-          Kilometraje: {{car.odom}}<br>
+          Kilometraje: {{car.odom}} Km<br>
           Interior:{{car.intType}} - {{car.intColor}}<br>
           Origen: {{car.origin}}<br>
-          Precio: {{car.price}}
+          Precio: Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
         </p>
       </ion-card-content>
     </ion-card>

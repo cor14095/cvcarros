@@ -7,12 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>search-results</ion-title>
+    <ion-title>Resultados de busqueda</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-card *ngFor="let car of cars">
+      <img src="{{car.image}}" (click)="detailView(car)"/>
+      <ion-card-content (click)="detailView(car)">
+        <ion-card-title>
+          {{car.brand}} {{car.model}} - {{car.year}}
+        </ion-card-title>
+        <p>
+          Kilometraje: {{car.odom}} Km<br>
+          Interior:{{car.intType}} - {{car.intColor}}<br>
+          Origen: {{car.origin}}<br>
+          Precio: Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

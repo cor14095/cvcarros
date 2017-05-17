@@ -34,9 +34,8 @@ export class UserService {
     try {
       firebase.initializeApp(config);
     } catch (exception) {
-      console.log(exception.message);
+      console.log("...");
     }
-    console.log('Hello UserService Provider');
 
     // Make authentication and get user profiles.
     this.fireAuth = firebase.auth();
@@ -108,31 +107,98 @@ export class UserService {
     var userId = this.fireAuth.currentUser.uid;
     var result = firebase.database().ref('user-data').child(userId).once('value').then(
       function(snapshot) {
-        console.log(snapshot.val());
+        //console.log(snapshot.val());
         return snapshot.val();
       });
     return result;
   }
 
-  postVehicle(brand, model, year, odom, type, extColor, intColor, intType,
-    origin, price, desc, phone, image): any {
+  setAveragePrices() {
+    // Create the dictionaries.
+    var sums = [];
+    var counts = [];
+    var avgs = [];
+
+    // First I'm gonna iterate all cars in DB and get the sums and counts.
+    //var mythis = this;
+    this.getCars().then(function(objects) {
+      // iterate each post.
+      for (let key in objects) {
+        // Here I have to check if key exist and if it does, sum the value.
+        // key: brand+model+year
+        // value: sum(prices)
+        var customKey = objects[key]["brand"].toLowerCase() + "," +
+          objects[key]["model"].toLowerCase() + "," +
+          objects[key]["year"].toLowerCase();
+
+        // Check for no dup keys.
+        if (!(customKey in sums)) {
+          // Create new key and value.
+          sums[customKey] = +objects[key]["price"];
+          counts[customKey] = 1;
+        } else {
+          // if it exists then add the value and inc count.
+          sums[customKey] += +objects[key]["price"];
+          counts[customKey] += 1;
+        };
+      };
+
+      // After getting all the sums and counts make averages
+      // iterate all elements of sum.
+      for (let key in sums) {
+        avgs[key] = Math.round((sums[key]/counts[key]) * 100) / 100;
+      }
+      console.log(avgs);
+
+      // Now I have to update the DB.
+      var updates = {};
+      // iterate each post.
+      for (let key in objects) {
+        // iterate each avgs key to split it and check if it fits a value to update it.
+        for (let keys in avgs) {
+          var info = keys.split(",");
+          // check all values of info.
+          if (objects[key]["brand"].toLowerCase() == info[0]
+          && objects[key]["model"].toLowerCase() == info[1]
+          && objects[key]["year"].toLowerCase() == info[2]) {
+            // It it fits all params, then I must update.
+            //console.log('/posts/' + key + "/avg -> " + avgs[keys]);
+            updates['/posts/' + key + "/avg"] = avgs[keys];
+          };
+        };
+      };
+      console.log(updates);
+      return firebase.database().ref().update(updates);
+    });
+
+  }
+
+  postVehicle(brand, model, year, odomT, odom, type, cyl, engS, trans, extColor,
+    intColor, intType, origin, priceC, price, desc, phone, image): any {
       var user = this.fireAuth.currentUser;
-      console.log(user);
+      //console.log(user);
       if (user.emailVerified) {
         // A post entry.
+        var avg = 0;
         var postData = {
           brand: brand,
           model: model,
           year: year,
+          odomT: odomT,
           odom: odom,
           type: type,
+          cyl: cyl,
+          engS: engS,
+          trans: trans,
           extColor: extColor,
           intColor: intColor,
           intType: intType,
           origin: origin,
+          priceC: priceC,
           price: price,
           desc: desc,
           phone: phone,
+          avg: avg,
           image: "img/" + image,
           user: user.email
         };

@@ -16,22 +16,30 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label>Marca</ion-label>
+      <ion-label>Marca*</ion-label>
       <ion-input type="text" [(ngModel)] = "brandField" placeholder="Toyota"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Linea</ion-label>
+      <ion-label>Linea*</ion-label>
       <ion-input type="text" [(ngModel)] = "modelField" placeholder="RAV"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Año</ion-label>
-      <ion-input type="year" [(ngModel)] = "yearField" placeholder="2015"></ion-input>
+      <ion-label>Año*</ion-label>
+      <ion-input type="number" [(ngModel)] = "yearField" placeholder="2015"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Kilometraje</ion-label>
+      <ion-label>Tipo de odometro</ion-label>
+      <ion-select [(ngModel)]="odomTypeField">
+        <ion-option value="Km">Kilometros</ion-option>
+        <ion-option value="mi">Millas</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Odometro</ion-label>
       <ion-input type="number" [(ngModel)] = "odomField" placeholder="15000"></ion-input>
     </ion-item>
 
@@ -41,10 +49,42 @@
         <ion-option value="pickup">Pick up</ion-option>
         <ion-option value="minivan">Minivan</ion-option>
         <ion-option value="camioneta">Camioneta</ion-option>
-        <ion-option value="4dsed">4p Sedan</ion-option>
-        <ion-option value="2dsed">2p Sedan</ion-option>
+        <ion-option value="4p sedan">4p Sedan</ion-option>
+        <ion-option value="2p sedan">2p Sedan</ion-option>
         <ion-option value="coupe">Coupe</ion-option>
-        <ion-option value="3d Coupe">3p Coupe</ion-option>
+        <ion-option value="3p Coupe">3p Coupe</ion-option>
+        <ion-option value="Hatchback">Hatchback</ion-option>
+        <ion-option value="2d deportivo"></ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cilindros</ion-label>
+      <ion-select [(ngModel)]="cylindersField">
+        <ion-option value="0">0</ion-option>
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>
+        <ion-option value="6">6</ion-option>
+        <ion-option value="8">8</ion-option>
+        <ion-option value="10">10</ion-option>
+        <ion-option value="12">12</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tamaño motor</ion-label>
+      <ion-input type="number" [(ngModel)] = "engineSizeField" placeholder="2.0"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Transmisión</ion-label>
+      <ion-select [(ngModel)]="transField">
+        <ion-option value="Mecanica">Mecanica</ion-option>
+        <ion-option value="Automatica">Automatica</ion-option>
+        <ion-option value="Tiptronic">Tiptronic</ion-option>
       </ion-select>
     </ion-item>
 
@@ -55,7 +95,7 @@
 
     <ion-item>
       <ion-label>Color interior</ion-label>
-      <ion-input type="text" [(ngModel)] = "intColorField" placeholder="beige"></ion-input>
+      <ion-input type="text" [(ngModel)] = "intColorField" placeholder="Beige"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -76,17 +116,26 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Precio Q</ion-label>
+      <ion-label>Moneda*</ion-label>
+      <ion-select [(ngModel)]="currencyField">
+        <ion-option value="Q">Quetzal (Q)</ion-option>
+        <ion-option value="USD">Dolar (USD)</ion-option>
+        <ion-option value="Euro">Euro (E)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Precio*</ion-label>
       <ion-input type="number" [(ngModel)] = "priceField" placeholder="55000"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Descripción</ion-label>
-      <ion-input type="text" [(ngModel)] = "descField" placeholder="Ful equipo, negociable, recibo vehículo..."></ion-input>
+      <ion-label>Descripción*</ion-label>
+      <ion-input type="text" [(ngModel)] = "descField" placeholder="Full equipo, negociable, recibo vehículo..."></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Contacto</ion-label>
+      <ion-label>Contacto*</ion-label>
       <ion-input type="phone" [(ngModel)] = "phoneField" placeholder="12345678"></ion-input>
     </ion-item>
 
