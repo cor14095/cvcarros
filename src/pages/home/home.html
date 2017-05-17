@@ -17,23 +17,16 @@
   <ion-searchbar
     [(ngModel)]="myInput"
     [showCancelButton]="shouldShowCancel"
-    (ionInput)="search()"
+    (ionInput)="search($event)"
     (ionCancel)="onCancel()">
   </ion-searchbar>
 
-  <!--
-  TODO:
-  - Fix the img path.
-  - Do the auto refresh window.
-  - Do the search().
-  - Do the car view detail info. (if needed)
- -->
   <ion-list>
-    <ion-card *ngFor="let car of cars">
+    <ion-card *ngFor="let car of cars" (click)="detailView()">
       <img src="{{car.image}}"/>
       <ion-card-content>
         <ion-card-title>
-          {{car.make}} {{car.model}} - {{car.year}}
+          {{car.brand}} {{car.model}} - {{car.year}}
           </ion-card-title>
         <p>
           {{car.desc}}.<br>

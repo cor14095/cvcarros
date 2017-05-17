@@ -16,6 +16,7 @@ import { Login }          from '../pages/login/login';
 import { CreateAccount }  from '../pages/create-account/create-account';
 import { ResetPassword }  from '../pages/reset-password/reset-password';
 import { Tabs }           from '../pages/tabs/tabs'
+import { VehicleInfoPage }from '../pages/vehicle-info/vehicle-info';
 
 import { UserService }    from '../providers/user-service';
 
@@ -31,7 +32,8 @@ import { UserService }    from '../providers/user-service';
     AdvancedSearch,
     SearchResults,
     VehiclePost,
-    ResetPassword
+    ResetPassword,
+    VehicleInfoPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { UserService }    from '../providers/user-service';
     AdvancedSearch,
     SearchResults,
     VehiclePost,
-    ResetPassword
+    ResetPassword,
+    VehicleInfoPage
   ],
   providers: [
     StatusBar,

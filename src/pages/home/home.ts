@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
 import { Login } from '../login/login';
-import { NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { VehicleInfoPage } from '../vehicle-info/vehicle-info';
+import { NavController, ViewController, AlertController, LoadingController, Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -17,15 +18,19 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,
     public alertCtrl: AlertController, public userService: UserService,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public platform: Platform) {
 
       this.dispName = this.userService.getDisplayName();
-
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter HomePage');
+    this.cars = [];
     this.loadCars();
+  }
+
+  detailView(){
+    this.navCtrl.push(VehicleInfoPage);
   }
 
   loadCars() {
@@ -33,14 +38,8 @@ export class HomePage {
     this.userService.getCars().then(function(object) {
       // Iterate for each post.
       for (let key in object) {
-        console.log(key + "->" + object[key]);
-        var car = [];
+        //console.log(key + "->" + object[key]);
         test.cars.push(object[key]);
-        // Iterate for each value in a post.
-        for (let post in object[key]) {
-          //console.log(object[key][post]);
-          car.push(object[key][post]);
-        };
       };
       console.log (test.cars);
     })
@@ -52,12 +51,29 @@ export class HomePage {
     this.navCtrl.setRoot(Login);
   }
 
-  search() {
-
+  search(ev: any) {
+    var test = this;
+    this.cars = [];
+    var values = ev.target.value.split(" ");
+    this.userService.getCars().then(function(object) {
+      // Iterate for each post.
+      for (let key in object) {
+        // Check if ev match any key word:
+        for (let value of values) {
+          if (object[key]["brand"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+              object[key]["model"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+              object[key]["year"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+              object[key]["price"].toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                test.cars.push(object[key]);
+              }
+        };
+      };
+      console.log(test.cars);
+      return test.cars;
+    })
   }
 
   onCancel() {
-    this.myInput = "";
   }
 
   showConfirm() {
