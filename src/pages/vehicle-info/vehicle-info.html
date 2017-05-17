@@ -17,4 +17,22 @@
 
 <ion-content padding>
 
+
+      <div>
+        <img src="{{car.image}}">
+
+        <p>
+          Tipo de vehiculo: {{car.type}}<br>
+          Kilometraje: {{car.odom}}<br>
+          Interior:{{car.intType}} - {{car.intColor}}<br>
+          Origen: {{car.origin}}<br>
+          Precio: Q{{car.price}}<br>
+          Color externo: {{car.extColor}}<br>
+
+        </p>
+        <p>{{car.desc}}</p>
+      </div>
+      <button button ion-button block>Solicitar reunion </button>
+
+
 </ion-content>
