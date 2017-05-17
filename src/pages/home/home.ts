@@ -24,13 +24,22 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter HomePage');
+    //console.log('ionViewDidEnter HomePage');
     this.cars = [];
     this.loadCars();
   }
 
-  detailView(){
-    this.navCtrl.push(VehicleInfoPage);
+  detailView(car: any){
+    this.navCtrl.push(VehicleInfoPage, {car: car});
+    //console.log(car);
+  }
+
+  onCancel() {
+    this.loadCars();
+  }
+
+  advanceSearch() {
+
   }
 
   loadCars() {
@@ -52,28 +61,29 @@ export class HomePage {
   }
 
   search(ev: any) {
-    var test = this;
-    this.cars = [];
-    var values = ev.target.value.split(" ");
-    this.userService.getCars().then(function(object) {
-      // Iterate for each post.
-      for (let key in object) {
-        // Check if ev match any key word:
-        for (let value of values) {
-          if (object[key]["brand"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-              object[key]["model"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-              object[key]["year"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-              object[key]["price"].toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-                test.cars.push(object[key]);
-              }
+    try {
+      var test = this;
+      var values = ev.target.value.split(" ");
+      this.cars = [];
+      this.userService.getCars().then(function(object) {
+        // Iterate for each post.
+        for (let key in object) {
+          // Check if ev match any key word:
+          for (let value of values) {
+            if (object[key]["brand"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+                object[key]["model"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+                object[key]["year"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+                object[key]["price"].toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+                  test.cars.push(object[key]);
+                }
+          };
         };
-      };
-      console.log(test.cars);
-      return test.cars;
-    })
-  }
-
-  onCancel() {
+        console.log(test.cars);
+        return test.cars;
+      });
+    } catch (exception) {
+      console.log(exception.message);
+    }
   }
 
   showConfirm() {

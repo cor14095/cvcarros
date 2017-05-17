@@ -16,12 +16,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VehicleInfoPage {
 
+  public car: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public userService: UserService) {
-  }
+      this.car = this.navParams.get('car');
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VehicleInfoPage');
+      console.log(this.car);
   }
 
 }
