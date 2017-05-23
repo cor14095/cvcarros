@@ -21,11 +21,23 @@ export class Login {
 
   public emailField: any;
   public passwordField: any;
+  public tabBarElement: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController,
               public userService: UserService, public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
 
+  }
+
+  ionViewWillEnter(){
+    if(this.tabBarElement != null)
+      this.tabBarElement.style.display = 'none';
+  }
+
+  ionViewWillLeave(){
+    if(this.tabBarElement != null)
+      this.tabBarElement.style.display = 'flex';
   }
 
   logIn() {
