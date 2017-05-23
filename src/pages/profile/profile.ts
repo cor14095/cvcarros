@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Login } from '../login/login';
+import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the Profile page.
@@ -26,7 +27,7 @@ export class Profile {
   public typeField: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public userService: UserService) {
+    public userService: UserService, public alertCtrl: AlertController) {
       this.getValues();
   }
 
@@ -45,4 +46,33 @@ export class Profile {
     });
 
   }
+
+  logOut() {
+    this.userService.logOutUser();
+    this.navCtrl.setRoot(Login);
+  }
+
+  showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Cerrar sesión?',
+      message: 'Esta seguro que desea cerrar su sesión?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log('Agree clicked');
+            this.logOut();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 }
