@@ -39,5 +39,8 @@
         </p>
       </ion-card-content>
     </ion-card>
+    <ion-card *ngIf="cars.length == 0">
+      No hay resultados para la busqueda
+    </ion-card>
   </ion-list>
 </ion-content>
