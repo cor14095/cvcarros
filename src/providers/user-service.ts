@@ -199,7 +199,7 @@ export class UserService {
           desc: desc,
           phone: phone,
           avg: avg,
-          image: "img/" + image,
+          image: image,
           user: user.email
         };
 

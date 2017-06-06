@@ -201,7 +201,8 @@ export class PostVehicle {
           })
         }
       })
-    })
+    });
+    this.display();
   }
 
   display() {
