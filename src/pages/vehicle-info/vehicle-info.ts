@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmailComposer } from '@ionic-native/email-composer';
+//import { EmailComposer } from '@ionic-native/email-composer';
 import { UserService } from '../../providers/user-service';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -15,9 +15,9 @@ export class VehicleInfoPage {
   public avg: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public userService: UserService, public emailComposer: EmailComposer) {
+    public userService: UserService/*, public emailComposer: EmailComposer*/) {
       this.car = this.navParams.get('car');
-      try {
+      /*try {
         this.emailComposer.isAvailable().then((available: boolean) =>{
           if(available) {
             //Now we know we can send
@@ -26,7 +26,7 @@ export class VehicleInfoPage {
         });
       } catch (exception) {
         console.log(exception.message);
-      }
+      }*/
   }
 
   ionViewDidEnter() {
