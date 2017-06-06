@@ -16,6 +16,7 @@ export class ViewPostsPage {
   }
 
   ionViewWillEnter() {
+    this.cars = [];
     this.loadCars();
   }
 
@@ -47,5 +48,34 @@ export class ViewPostsPage {
 
   detailView(car: any){
     this.navCtrl.push(VehicleInfoPage, {car: car});
+  }
+
+  search(ev: any) {
+    try {
+      var test = this;
+      if (ev.target.value == undefined || ev.target.value == " ") {
+        ev.target.value = ""
+      }
+      var values = ev.target.value.split(" ");
+      this.cars = [];
+      this.userService.getCars().then(function(object) {
+        // Iterate for each post.
+        for (let key in object) {
+          // Check if ev match any key word:
+          for (let value of values) {
+            if (object[key]["brand"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+                object[key]["model"].toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+                object[key]["year"].toString().indexOf(value) !== -1 ||
+                object[key]["price"].toString().indexOf(value) !== -1) {
+                    test.cars.push(object[key]);
+                }
+          };
+        };
+        //console.log(test.cars);
+        return test.cars;
+      });
+    } catch (exception) {
+      console.log(exception.message);
+    }
   }
 }
