@@ -61,4 +61,30 @@
     </ion-item>
   </ion-list>
 
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        <button button ion-button full (click)="editProfile()">
+          Editar perfil
+        </button>
+      </ion-col>
+      <ion-col>
+        <button button ion-button full (click)="viewPosts()">
+          Mis publicaciones
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button button ion-button full (click)="showConfirm()">
+          Cerrar sesión
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>

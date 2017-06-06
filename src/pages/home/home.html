@@ -20,26 +20,60 @@
   <ion-searchbar (ionInput)="search($event)">
   </ion-searchbar>
 
-  <a end (click) = "advanceSearch()">
+  <button button ion-button full clear (click)="advanceSearch()">
     Busqueda avanzada
-  </a>
+  </button>
 
   <ion-list>
     <ion-card *ngFor="let car of cars">
       <img src="{{car.image}}" (click)="detailView(car)"/>
       <ion-card-content (click)="detailView(car)">
-        <ion-card-title>
-          {{car.brand}} {{car.model}} - {{car.year}}
-        </ion-card-title>
-        <p>
-          Kilometraje: {{car.odom}} Km<br>
-          Interior:{{car.intType}} - {{car.intColor}}<br>
-          Origen: {{car.origin}}<br>
-          Precio: Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
-        </p>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-title>
+                {{car.brand}} {{car.model}} - {{car.year}}
+              </ion-card-title>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Kilometraje: {{car.odom}} Km
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Interior: {{car.intType}} color {{car.intColor}}.
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Origen: {{car.origin}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-auto>
+              Precio:
+                <div class="{{colorCheck(car.price)}}">
+                  Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
+                </div>
+            </ion-col>
+            <ion-col>
+              <button button ion-button full>
+                Detalles
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngIf="cars.length == 0">
+    <ion-card *ngIf="cars.length == 0" class="no_results">
       No hay resultados para la busqueda
     </ion-card>
   </ion-list>

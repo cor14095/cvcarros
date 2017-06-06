@@ -42,17 +42,27 @@ export class Login {
 
   logIn() {
     console.log('User ' + this.emailField + ' try to log in with password ' + this.passwordField);
-    this.userService.singIn(this.emailField, this.passwordField).then(authData => {
-      this.navCtrl.setRoot(Tabs);
-    }, error => {
-      this.showAlert("Error al iniciar sesión!", error.message);
-    });
 
     let loader = this.loadingCtrl.create({
       dismissOnPageChange: true
     });
 
     loader.present();
+
+    try {
+      this.userService.singIn(this.emailField, this.passwordField).then(authData => {
+        this.navCtrl.setRoot(Tabs);
+      }, error => {
+      this.showAlert("Error al iniciar sesión!", error.message);
+      this.navCtrl.setRoot(Login);
+    }
+);
+    }
+    catch (exception) {
+      this.showAlert("Error al iniciar sesión!", exception.message);
+      this.navCtrl.setRoot(Login);
+      loader.dismiss()
+    }
   }
 
   register() {

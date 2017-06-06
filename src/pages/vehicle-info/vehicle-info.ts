@@ -29,9 +29,9 @@ export class VehicleInfoPage {
     this.avg = Math.abs(Math.round((this.car.price - this.car.avg) * 100) / 100).toFixed(2);
 
     if (this.avg < 0) {
-      this.verb = "barato";
-    } else {
       this.verb = "caro";
+    } else {
+      this.verb = "barato";
     }
   }
 

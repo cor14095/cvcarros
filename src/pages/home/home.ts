@@ -57,6 +57,14 @@ export class HomePage {
     };
   }
 
+  colorCheck(price) {
+    if (price > 0) {
+      return "down";
+    } else {
+      return "up";
+    };
+  }
+
   logOut() {
     this.userService.logOutUser();
     this.navCtrl.setRoot(Login);

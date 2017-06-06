@@ -51,6 +51,15 @@ export class Profile {
     this.userService.logOutUser();
     this.navCtrl.setRoot(Login);
   }
+  editProfile() {
+    // Make a view to edit the profile.
+
+  }
+
+  viewPosts() {
+    // Make a View like home where you can see user's posts.
+    
+  }
 
   showConfirm() {
     let confirm = this.alertCtrl.create({
