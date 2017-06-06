@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
-import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the ResetPassword page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-reset-password',
   templateUrl: 'reset-password.html',

@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
-import { IonicPage, NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 
-/**
- * Generated class for the CreateAccount page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+
 @Component({
   selector: 'page-create-account',
   templateUrl: 'create-account.html',

@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { CreateAccount } from '../create-account/create-account';
 import { ResetPassword } from '../reset-password/reset-password';
 import { Tabs } from '../tabs/tabs';
 import { UserService } from '../../providers/user-service';
 
-/**
- * Generated class for the Login page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

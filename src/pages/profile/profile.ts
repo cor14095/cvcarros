@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
 import { Login } from '../login/login';
-import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the Profile page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
@@ -58,7 +51,7 @@ export class Profile {
 
   viewPosts() {
     // Make a View like home where you can see user's posts.
-    
+
   }
 
   showConfirm() {

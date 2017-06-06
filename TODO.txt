@@ -17,4 +17,3 @@ CVCarros TODO:
 -- Cargar imagen(es).
 -- Ver multiples imagenes en descripción.
 -- Agregar el icono en los lugares posibles.(Done)
-

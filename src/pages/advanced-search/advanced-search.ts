@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
 import { SearchResults } from '../search-results/search-results';
-import { IonicPage, NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 
-/**
- * Generated class for the AdvancedSearch page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-advanced-search',
   templateUrl: 'advanced-search.html',
