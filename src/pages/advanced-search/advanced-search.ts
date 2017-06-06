@@ -35,24 +35,28 @@ export class AdvancedSearch {
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   }
 
+  ionViewWillEnter() {
+    this.clear();
+  }
+
   clear() {
-    this.brandField = "";
-    this.modelField = "";
-    this.minYearField = "";
-    this.maxYearField = "";
-    this.odomTypeField = "";
-    this.odomField = "";
-    this.typeField = "";
-    this.cylindersField = "";
-    this.engineSizeField = "";
-    this.transField = "";
-    this.extColorField = "";
-    this.intColorField = "";
-    this.intTypeField = "";
-    this.originField = "";
-    this.currencyField = "";
-    this.minPriceField = "";
-    this.maxPriceField = "";
+    this.brandField = undefined;
+    this.modelField = undefined;
+    this.minYearField = undefined;
+    this.maxYearField = undefined;
+    this.odomTypeField = undefined;
+    this.odomField = undefined;
+    this.typeField = undefined;
+    this.cylindersField = undefined;
+    this.engineSizeField = undefined;
+    this.transField = undefined;
+    this.extColorField = undefined;
+    this.intColorField = undefined;
+    this.intTypeField = undefined;
+    this.originField = undefined;
+    this.currencyField = undefined;
+    this.minPriceField = undefined;
+    this.maxPriceField = undefined;
   }
 
   removeWhitespaces() {

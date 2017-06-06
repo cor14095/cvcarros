@@ -12,12 +12,14 @@ import { Profile }        from '../pages/profile/profile';
 import { PostVehicle }    from '../pages/post-vehicle/post-vehicle';
 import { AdvancedSearch } from '../pages/advanced-search/advanced-search';
 import { SearchResults }  from '../pages/search-results/search-results';
-import { VehiclePost, }    from '../pages/vehicle-post/vehicle-post';
+import { VehiclePost, }   from '../pages/vehicle-post/vehicle-post';
 import { Login }          from '../pages/login/login';
 import { CreateAccount }  from '../pages/create-account/create-account';
 import { ResetPassword }  from '../pages/reset-password/reset-password';
 import { Tabs }           from '../pages/tabs/tabs'
 import { VehicleInfoPage }from '../pages/vehicle-info/vehicle-info';
+import { EditProfilePage }from '../pages/edit-profile/edit-profile';
+import { ViewPostsPage }  from '../pages/view-posts/view-posts';
 
 import { UserService }    from '../providers/user-service';
 
@@ -34,6 +36,8 @@ import { UserService }    from '../providers/user-service';
     SearchResults,
     VehiclePost,
     ResetPassword,
+    EditProfilePage,
+    ViewPostsPage,
     VehicleInfoPage
   ],
   imports: [
@@ -53,6 +57,8 @@ import { UserService }    from '../providers/user-service';
     SearchResults,
     VehiclePost,
     ResetPassword,
+    EditProfilePage,
+    ViewPostsPage,
     VehicleInfoPage
   ],
   providers: [
