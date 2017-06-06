@@ -29,8 +29,11 @@
         </p>
       </ion-card-content>
     </ion-card>
-    <div *ngIf="cars.length == 0">
+    <div *ngIf="cars.length == 0" class="no_results">
       No hay resultados para la busqueda
+      <div>
+        &#9785;
+      </div>
     </div>
 
 

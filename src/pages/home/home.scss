@@ -9,3 +9,21 @@ page-home {
 .up {
   color: Red;
 }
+
+ion-card {
+   border-top: 3px solid #ffb548;
+}
+
+.no_results {
+  font-size: 20px;
+  color: #a3a3a3;
+  align-content: center;
+  text-align: center;
+  word-wrap: break-word;
+  div {
+    font-size: 100px;
+    color: #ffb548;
+    align-content: center;
+    text-align: center;
+  }
+}
