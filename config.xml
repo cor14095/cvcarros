@@ -83,6 +83,6 @@
     <plugin name="cordova-plugin-statusbar" spec="2.2.2" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <gap:plugin name="cordova-plugin-email-composer" source="npm" version="0.8.3" />
-    <plugin name="com.megster.cordova.FileChooser" spec="http://github.com/don/cordova-filechooser.git" />
+    <plugin name="cordova-plugin-email-composer" source="npm" version="0.8.3" />
+    <plugin name="com.megster.cordova.FileChooser" spec="https://github.com/don/cordova-filechooser.git" />
 </widget>
