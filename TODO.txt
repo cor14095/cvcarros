@@ -1,19 +1,19 @@
 CVCarros TODO:
 - Agregar:
--- Editar mi publicación. 
+-- Editar mi publicaci?n. 
 -- Solicitar cita.
 -- Cargar imagen(es).
--- Ver multiples imagenes en descripción.
+-- Ver multiples imagenes en descripci?n.
 
 
 Task done:
 - Las flechas que indican subidas y bajadas de precion no tienen color. (Fixed)
 - El sistema de ayuda deberia ayudar con terminos de carros. (Fixed)
-- En cada publicación hubiese sido ideal colocar un botón de más información. (Fixed)
-- La línea de separación entre los carros casi no se distingue y se ve muy seguida.(Fixed)
-- El logo también podría ayudar para dar confianza a la aplicación y sentirme como utilizándola. (Fixed)
-- En el área de hacer mi publicación fue cuando necesite el sistema de ayuda pero no había, 
-  necesitaba saber que significaban varias cosas de las que estaban ahí. (Fixed)
+- En cada publicaci?n hubiese sido ideal colocar un bot?n de m?s informaci?n. (Fixed)
+- La l?nea de separaci?n entre los carros casi no se distingue y se ve muy seguida.(Fixed)
+- El logo tambi?n podr?a ayudar para dar confianza a la aplicaci?n y sentirme como utiliz?ndola. (Fixed)
+- En el ?rea de hacer mi publicaci?n fue cuando necesite el sistema de ayuda pero no hab?a, 
+  necesitaba saber que significaban varias cosas de las que estaban ah?. (Fixed)
 - Agregar:
 -- Agregar el icono en los lugares posibles.(Done)
 -- Editar Perfil. (Done)
