@@ -231,4 +231,35 @@ export class UserService {
     });
   }
 
+  getCarsUser() {
+
+    return new Promise((resolve) => {
+      var user = this.fireAuth.currentUser;
+      console.log(user.uid);
+      firebase.database().ref('/car-posts/' + user.uid).once('value').then(function(snapshot) {
+        console.log(snapshot.val());
+        resolve(snapshot.val());
+      });
+    });
+  }
+
+  updateProfile(name: string, lastName: string, age: number, email: string, phone: number,
+    city: string, zone: number, type: string) {
+      var update = {};
+      var user = this.fireAuth.currentUser;
+
+      update['/user-data/' + user.uid + '/'] = {
+        name: name,
+        lastName: lastName,
+        age: age,
+        email: email,
+        phone: phone,
+        city: city,
+        zone: zone,
+        type: type
+      };
+
+      return firebase.database().ref().update(update);
+    }
+
 }

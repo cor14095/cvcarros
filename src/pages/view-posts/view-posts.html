@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ViewPostsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mis publicaciones</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="search($event)">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-card *ngFor="let car of cars">
+      <img src="{{car.image}}" (click)="detailView(car)"/>
+      <ion-card-content (click)="detailView(car)">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-title>
+                {{car.brand}} {{car.model}} - {{car.year}}
+              </ion-card-title>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Kilometraje: {{car.odom}} Km
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Interior: {{car.intType}} color {{car.intColor}}.
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              Origen: {{car.origin}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-auto>
+              Precio:
+                <div class="{{colorCheck(car.price)}}">
+                  Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
+                </div>
+            </ion-col>
+            <ion-col>
+              <button button ion-button full>
+                Detalles
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="cars.length == 0" class="no_results">
+      No hay publicaciones para mostrar
+      <div>
+        &#9785;
+      </div>
+    </ion-card>
+  </ion-list>
+</ion-content>

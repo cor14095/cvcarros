@@ -1,19 +1,20 @@
 CVCarros TODO:
-- Las flechas que indican subidas y bajadas de precion no tienen color. (Fixed)
-- El sistema de ayuda deberia ayudar con terminos de carros. (Fixed)
-- En cada publicacin hubiese sido ideal colocar un botn de ms informacin. (Fixed)
-- Seria bueno agregarlo a una opcion de favoritos o posibles compras.
-- La lnea de separacin entre los carros casi no se distingue y se ve muy seguida.(Fixed)
-- El logo tambin podra ayudar para dar confianza a la aplicacin y sentirme como utilizndola. (Fixed)
-- En el rea de hacer mi publicacin fue cuando necesite el sistema de ayuda pero no haba,
-  necesitaba saber que significaban varias cosas de las que estaban ah. (Fixed)
-- Por otro lado tambin tiene que haber una descripcin de la aplicacin en el inicio para saber
-  cmo va a funcionar.
 - Agregar:
--- Editar Perfil. (Agrugue el boton)
--- Ver mis publicaciones. (Agregue el boton)
--- Editar mi publicacin.
+-- Editar mi publicación. 
 -- Solicitar cita.
 -- Cargar imagen(es).
--- Ver multiples imagenes en descripcin.
+-- Ver multiples imagenes en descripción.
+
+
+Task done:
+- Las flechas que indican subidas y bajadas de precion no tienen color. (Fixed)
+- El sistema de ayuda deberia ayudar con terminos de carros. (Fixed)
+- En cada publicación hubiese sido ideal colocar un botón de más información. (Fixed)
+- La línea de separación entre los carros casi no se distingue y se ve muy seguida.(Fixed)
+- El logo también podría ayudar para dar confianza a la aplicación y sentirme como utilizándola. (Fixed)
+- En el área de hacer mi publicación fue cuando necesite el sistema de ayuda pero no había, 
+  necesitaba saber que significaban varias cosas de las que estaban ahí. (Fixed)
+- Agregar:
 -- Agregar el icono en los lugares posibles.(Done)
+-- Editar Perfil. (Done)
+-- Ver mis publicaciones. (Done)

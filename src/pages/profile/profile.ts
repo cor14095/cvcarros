@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../providers/user-service';
 import { Login } from '../login/login';
+import { EditProfilePage } from '../edit-profile/edit-profile';
+import { ViewPostsPage } from '../view-posts/view-posts';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 @Component({
@@ -21,10 +23,15 @@ export class Profile {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public userService: UserService, public alertCtrl: AlertController) {
-      this.getValues();
+      //this.getValues();
+  }
+
+  ionViewWillEnter() {
+    this.getValues();
   }
 
 // TODO: Fix this function to return correct values.
+// This function was never fixed, but it worked as intended after a while, so...
   getValues() {
     var test = this;
     this.userService.getProfile().then(function(object){
@@ -46,12 +53,12 @@ export class Profile {
   }
   editProfile() {
     // Make a view to edit the profile.
-
+    this.navCtrl.push(EditProfilePage);
   }
 
   viewPosts() {
     // Make a View like home where you can see user's posts.
-
+    this.navCtrl.push(ViewPostsPage);
   }
 
   showConfirm() {
