@@ -105,7 +105,7 @@ export class PostVehicle {
     this.phoneField == undefined || this.descField == undefined ||
     this.currencyField == undefined || this.image == undefined) {
       // If any of these fields are blank then you can't publish the vehicle.
-      this.showAlert("Error!", "Por favor llenar minimo los campos de marca, modelo, año, precio, descripción y numero de contacto.");
+      this.showAlert("Error!", "Por favor llenar minimo los campos de marca, modelo, año, precio, descripción, numero de contacto y suba una imagen.");
     } else {
       // Now I check if any other field is left unfilled I channge undefined for "".
       if (this.odomField == undefined) {
@@ -193,25 +193,35 @@ export class PostVehicle {
         reader.readAsArrayBuffer(resFile);
         reader.onloadend = (evt: any) => {
           var imgBlob = new Blob([evt.target.result], { type: 'image/jpeg' });
-          var imageStore = this.firestore.ref().child('image');
+          var id = this.userService.getUserId();
+          var random = this.getRandomInt(0,100000);
+          var imageId = id + '/' + random;
+          var imageStore = this.firestore.ref().child(imageId);
+
           imageStore.put(imgBlob).then((res) => {
-            alert('Upload Success');
+            alert('Se subio la imagen correctamente');
+            this.display(imageId);
           }).catch((err) => {
-            alert('Upload Failed' + err);
+            alert('No se subio la imagen, vuelva a intentarlo' + err);
           })
         }
       })
     });
-    this.display();
   }
 
-  display() {
-    this.firestore.ref().child('image').getDownloadURL().then((url) => {
+  display(imageId) {
+    this.firestore.ref().child(imageId).getDownloadURL().then((url) => {
       this.zone.run(() => {
         this.image = url;
       })
     })
   }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 }
 

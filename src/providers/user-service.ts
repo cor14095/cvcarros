@@ -243,6 +243,14 @@ export class UserService {
     });
   }
 
+  getUserId(): any{
+    var user = this.fireAuth.currentUser;
+
+    return user.uid;
+
+  }
+
+
   updateProfile(name: string, lastName: string, age: number, email: string, phone: number,
     city: string, zone: number, type: string) {
       var update = {};
