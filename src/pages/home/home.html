@@ -59,8 +59,8 @@
           <ion-row>
             <ion-col col-auto>
               Precio:
-                <div class="{{colorCheck(car.price)}}">
-                  Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price)}}"></ion-icon>
+                <div class="{{colorCheck(car.price - car.avg)}}">
+                  Q {{car.price}} -- <ion-icon name="{{priceCheck(car.price - car.avg)}}"></ion-icon>
                 </div>
             </ion-col>
             <ion-col>

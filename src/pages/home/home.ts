@@ -50,7 +50,7 @@ export class HomePage {
   }
 
   priceCheck(price) {
-    if (price > 0) {
+    if (price <= 0) {
       return "arrow-round-down";
     } else {
       return "arrow-round-up";
@@ -58,7 +58,7 @@ export class HomePage {
   }
 
   colorCheck(price) {
-    if (price > 0) {
+    if (price <= 0) {
       return "down";
     } else {
       return "up";

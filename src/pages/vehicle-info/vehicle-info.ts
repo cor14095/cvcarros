@@ -22,13 +22,14 @@ export class VehicleInfoPage {
   }
 
   ionViewDidEnter() {
-    this.avg = Math.abs(Math.round((this.car.price - this.car.avg) * 100) / 100).toFixed(2);
+    this.avg = (Math.round((this.car.avg - this.car.price) * 100) / 100).toFixed(2);
 
     if (this.avg < 0) {
       this.verb = "caro";
     } else {
       this.verb = "barato";
     }
+    this.avg = Math.abs(this.avg);
   }
 
   sendMail() {
